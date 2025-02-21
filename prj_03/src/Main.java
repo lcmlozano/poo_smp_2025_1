@@ -15,5 +15,8 @@ public class Main {
 
         obj_pessoa1.imprimir();
         obj_pessoa2.imprimir();
+
+        //obj_pessoa1.reajuste();
+        //obj_pessoa2.reajuste();
     }
 }
