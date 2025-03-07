@@ -1,8 +1,9 @@
 package model;
 
 public class Aluno {
-    public String nome, rgm;
-    public int idade;
+    private String nome;
+    private String rgm;
+    private int idade;
     private double nota1;
     private double nota2;
 
@@ -20,7 +21,34 @@ public class Aluno {
         }
     }
 
-    public void inserirNota1(double nota){
+    public String getRgm() {
+        return rgm;
+    }
+
+    public void setRgm(String rgm) {
+        if (rgm.length() == 6){
+            this.rgm = rgm;
+        }
+        else{
+            System.out.println("RGM inválido");
+        }
+
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        if(nome.length() >= 3){
+            this.nome = nome;
+        }
+        else{
+            System.out.println("Nome inválido!!!");
+        }
+    }
+
+    public void setNota1(double nota){
         if(nota >= 0 && nota <=10){
             this.nota1 = nota;
         }
@@ -29,11 +57,11 @@ public class Aluno {
         }
     }
 
-    public double pegarNota1(){
+    public double getNota1(){
         return this.nota1;
     }
 
-    public void inserirNota2(double nota){
+    public void setNota2(double nota){
         if(nota >= 0 && nota <=10){
             this.nota2 = nota;
         }
@@ -42,9 +70,30 @@ public class Aluno {
         }
     }
 
-    public double pegarNota2(){
+    public double getNota2(){
         return this.nota2;
     }
 
+    public int getIdade() {
+        return idade;
+    }
 
+    public void setIdade(int idade) {
+        if(idade >= 18){
+            this.idade = idade;
+        }
+        else{
+            System.out.println("Idade Inválida");
+        }
+    }
+
+    public String imprimirDados(){
+        return "Nome: " + this.nome +
+                "\nRGM: " + this.rgm +
+                "\nIdade: " + this.idade +
+                "\nNota 1: " + this.nota1 +
+                "\nNota 2: " + this.nota2 +
+                "\nMédia: " + this.calcularMedia(this.nota1, this.nota2) +
+                "\nStatus: " + ((this.verificarAprovacao(this.calcularMedia(this.nota1, this.nota2)))?"Aprovado":"Reprovado");
+    }
 }
